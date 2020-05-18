@@ -44,5 +44,27 @@ $(document).ready(function () {
       {
         location = e.innerText;
       }
-    });
+  
+      // should make this generic to use this on the area clicked
+      // let location = $(this).val().trim().toUpperCase();
+      if (location == "") return;
+  
+     });
+    // it is for the date 
+    function convertDate(D) {
+        // function to convert unix epoch to local time
+        // returns arr ["MM/DD/YYYY, HH:MM:SS AM", "MM/DD/YYYY", "HH:MM:SS AM"]
+        let readable = [];
+        let myDate = new Date(D * 1000);
+    
+        // local time
+        // returns string "MM/DD/YYYY, HH:MM:SS AM"
+        readable[0] = (myDate.toLocaleString());
+        readable[1] = ((myDate.toLocaleString().split(", "))[0]);
+        readable[2] = ((myDate.toLocaleString().split(", "))[1]);
+    
+        return readable;
+      }
+    })
+
   
