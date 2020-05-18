@@ -66,5 +66,53 @@ $(document).ready(function () {
         return readable;
       }
     })
+      
+    function getCurWeather(loc) {
+        // function to get current weather
+        // returns object of current weather data
+    
+    
+        drawHistory();
+        // clear search field
+        $('#city-search').val("");
+    
+        if (typeof loc === "object") {
+          city = `lat=${loc.latitude}&lon=${loc.longitude}`;
+        } else {
+          city = `q=${loc}`;
+        }
+  
+        //     For temperature in Fahrenheit use units=imperial    
+        // set queryURL based on type of query
+        requestType = 'weather';
+        query = `?${city}&units=imperial&appid=${apiKey}`;
+        queryURL = `${url}${requestType}${query}`;
+    
+        // Create an AJAX call to retrieve data Log the data in console
+        $.ajax({
+          url: queryURL,
+          method: 'GET'
+        }).then(function (response) {
+          
+    
+          weatherObj = {
+            city: `${response.name}`,
+            wind: response.wind.speed,
+            humidity: response.main.humidity,
+            temp: response.main.temp,
+            date: (convertDate(response.dt))[1],
+            icon: `http://openweathermap.org/img/w/${response.weather[0].icon}.png`,
+            desc: response.weather[0].description
+  
+          }
+    console.log(response);
+          // calls function to draw results to page
+          drawCurWeather(weatherObj);
+          // creating funcation for GetUN
+          getUvIndex(response);
+        });
+        
+      };
+    
 
   
