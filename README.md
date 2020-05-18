@@ -16,3 +16,9 @@ The most important thing is that you need to the Ajax so as you can call the api
 <!-- $.ajax({
         url: queryURL,
         method: 'GET' -->
+also you need to make sure that you read all Doc. 
+
+there are different thing that i made one createing the funcation for data. 
+ALso, i tried to make the 5 days forcasting working by adding a class for assmbleing and adding to the page and then creating the funcation that call it . 
+This homeowrk enable me to know alot about API and know how to deal with different API>
+
